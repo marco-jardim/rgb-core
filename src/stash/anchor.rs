@@ -15,6 +15,7 @@
 use serde_with::{As, DisplayFromStr};
 use std::cmp::Ordering;
 use std::collections::{BTreeMap, HashMap};
+use log::{info, warn};
 
 use amplify::{DumbDefault, Wrapper};
 use bitcoin::hashes::{sha256, sha256d, sha256t, Hash};
@@ -237,6 +238,7 @@ impl Anchor {
                 .get(vout)
                 .ok_or(Error::NoRequiredOutputInformation(vout))?
                 .clone();
+            warn!("psbt_out: {}", psbt_out);
             let tx_out = &tx.output[vout];
 
             let pubkey = secp256k1::PublicKey::from_slice(
@@ -250,6 +252,7 @@ impl Anchor {
                     .ok_or(Error::NoRequiredPubkey(vout))?,
             )
             .map_err(|_| Error::WrongPubkeyData)?;
+            warn!("pubkey: {}", pubkey);
             // TODO #53: (new) Add support for Taproot parsing
             let source = match psbt_out
                 .redeem_script
@@ -274,6 +277,7 @@ impl Anchor {
                 //      and return error otherwise
                 ScriptEncodeMethod::WPubkeyHash
             };
+            warn!("method: {}", method);
 
             let mut container = TxoutContainer {
                 value: tx_out.value,
@@ -286,6 +290,7 @@ impl Anchor {
                 },
                 tweaking_factor: None,
             };
+            warn!("container: {}", container);
 
             let mm_buffer: Vec<u8> = mm_commitment
                 .clone()
@@ -316,6 +321,7 @@ impl Anchor {
                         )[..].to_vec())
                 });
 
+            warn!("psbt: {}", psbt);
             multimsg.iter().for_each(|(id, _)| {
                 let contract_id =
                     ContractId::from_hash(sha256d::Hash::from_inner(**id));
@@ -327,7 +333,8 @@ impl Anchor {
                 proof: container.into_proof(),
             });
         }
-
+        warn!("anchors: {}", anchors);
+        warn!("contract_anchor_map: {}", contract_anchor_map);
         Ok((anchors, contract_anchor_map))
     }
 
