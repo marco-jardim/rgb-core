@@ -43,8 +43,8 @@ required-features = ["cli", "serde"]
 amplify = { version = "3.4", features = ["stringly_conversions"] }
 amplify_derive = "2.7"
 lnpbp = { git = "https://github.com/LNP-BP/rust-lnpbp", features = ["bulletproofs", "zip"] }
-strict_encoding = { path = "../../lnpbp/rust-lnpbp/strict_encoding", version = "1.2.2", default-features = false, features = ["crypto", "chrono"] }
-strict_encoding_derive = { path = "../../lnpbp/rust-lnpbp/strict_encoding/derive" }
+strict_encoding = { git = "https://github.com/LNP-BP/rust-lnpbp", version = "1.2.2", default-features = false, features = ["crypto", "chrono"] }
+strict_encoding_derive = {  git = "https://github.com/LNP-BP/rust-lnpbp" }
 lightning_encoding = "0.4.0-beta.1"
 descriptor-wallet = "0.4"
 # Dependencies on core rust-bitcoin ecosystem projects
