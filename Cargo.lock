@@ -24,7 +24,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6c0e727465efa19191f24c4167350cba8b1482dcfa45491c84c069ecf1696d81"
 dependencies = [
  "amplify_derive",
- "amplify_syn",
  "serde",
  "serde_json",
  "serde_yaml",
@@ -228,7 +227,7 @@ dependencies = [
  "amplify_derive",
  "bitcoin_hashes",
  "grin_secp256k1zkp",
- "strict_encoding 1.2.3",
+ "strict_encoding",
 ]
 
 [[package]]
@@ -321,7 +320,7 @@ dependencies = [
  "serde",
  "serde_with",
  "slip132",
- "strict_encoding 1.2.3",
+ "strict_encoding",
 ]
 
 [[package]]
@@ -520,7 +519,7 @@ dependencies = [
  "bitcoin",
  "descriptor-wallet",
  "lightning_encoding_derive",
- "strict_encoding 1.2.3",
+ "strict_encoding",
 ]
 
 [[package]]
@@ -562,8 +561,8 @@ dependencies = [
  "serde",
  "serde_with",
  "serde_with_macros",
- "strict_encoding 1.2.3",
- "strict_encoding_derive 1.0.0",
+ "strict_encoding",
+ "strict_encoding_derive",
 ]
 
 [[package]]
@@ -918,8 +917,6 @@ dependencies = [
  "serde_with",
  "serde_with_macros",
  "serde_yaml",
- "strict_encoding 1.3.0",
- "strict_encoding_derive 1.1.0",
 ]
 
 [[package]]
@@ -1127,19 +1124,7 @@ dependencies = [
  "bitcoin",
  "chrono",
  "miniscript",
- "strict_encoding_derive 1.0.0",
-]
-
-[[package]]
-name = "strict_encoding"
-version = "1.3.0"
-dependencies = [
- "amplify",
- "amplify_derive",
- "bitcoin",
- "chrono",
- "ed25519-dalek",
- "grin_secp256k1zkp",
+ "strict_encoding_derive",
 ]
 
 [[package]]
@@ -1147,16 +1132,6 @@ name = "strict_encoding_derive"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "89347dfd57ea3160e6de4d7b21b3236b8a40800c1760ebfcfe9d69e3634e8955"
-dependencies = [
- "amplify",
- "proc-macro2",
- "quote",
- "syn",
-]
-
-[[package]]
-name = "strict_encoding_derive"
-version = "1.1.0"
 dependencies = [
  "amplify",
  "proc-macro2",
