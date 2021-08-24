@@ -226,7 +226,6 @@ dependencies = [
  "amplify",
  "amplify_derive",
  "bitcoin_hashes",
- "grin_secp256k1zkp",
  "strict_encoding",
 ]
 
